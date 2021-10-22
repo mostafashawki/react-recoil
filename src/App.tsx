@@ -1,25 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect} from 'react';
+import {useEmployees} from './components/hooks/useEmployees';
+import Card from './components/Card';
+import api from './api/employees';
+import {IEmployee} from './interfaces/employee';
+import Notifications from "react-notify-toast";
 import './App.css';
 
-function App() {
+const fetchEmployees = async () :Promise<IEmployee[]> => {
+  const response = await api.get("/employees");
+  return response.data as IEmployee[];
+};
+
+  const App: React.FunctionComponent = () => {
+  const {employees, setEmployees} = useEmployees();
+
+  useEffect(() => {
+    const getEmployees = async () => {
+      const employeesList:IEmployee[] = await fetchEmployees();
+      if (employeesList) setEmployees(employeesList);
+    };
+
+    getEmployees();
+
+  },[]);
+
+  const renderEmployeesList = employees.map((employee:IEmployee) => {
+    return (
+      <Card key={employee.id} employee={employee}/>
+    );
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main>
+      <header>
+        <h1>HR Management System</h1>
       </header>
-    </div>
+      <div className="cards">
+        {renderEmployeesList}
+      </div>
+      <Notifications />
+      </main>
+   
   );
 }
 

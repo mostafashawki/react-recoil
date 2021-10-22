@@ -1,0 +1,36 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Jhon",
+      "email": "j@gmail.com",
+      "title": "CEO",
+      "picture": "https://randomuser.me/api/portraits/men/19.jpg",
+      "state": "Added"
+    },
+    {
+      "id": "2",
+      "name": "Mike",
+      "email": "m@gmail.com",
+      "title": "CTO",
+      "picture": "https://randomuser.me/api/portraits/men/74.jpg",
+      "state": "Active"
+    },
+    {
+      "id": "3",
+      "name": "Adam",
+      "email": "a@gmail.com",
+      "title": "CFO",
+      "picture": "https://randomuser.me/api/portraits/men/34.jpg",
+      "state": "In-check"
+    },
+    {
+      "id": "4",
+      "name": "Owens",
+      "email": "o@gmail.com",
+      "title": "Software Engineer",
+      "picture": "https://randomuser.me/api/portraits/men/28.jpg",
+      "state": "Approved"
+    }
+  ]
+}
